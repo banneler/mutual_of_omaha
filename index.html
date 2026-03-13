@@ -55,7 +55,7 @@
             </h2>
             
             <div class="grid grid-cols-3 gap-x-24 gap-y-16 fade-in w-full justify-items-center" style="animation-delay: 0.4s;">
-                <div class="text-center w-full"><span class="block text-6xl font-bold text-gpc-green mb-4 drop-shadow-md">20,000+</span><span class="text-slate-400 uppercase tracking-widest text-sm font-semibold">Fiber Miles</span></div>
+                <div class="text-center w-full"><span class="block text-6xl font-bold text-gpc-green mb-4 drop-shadow-md">19,000+</span><span class="text-slate-400 uppercase tracking-widest text-sm font-semibold">Fiber Miles</span></div>
                 <div class="text-center w-full"><span class="block text-6xl font-bold text-white mb-4 drop-shadow-md">13</span><span class="text-slate-400 uppercase tracking-widest text-sm font-semibold">States Served</span></div>
                 <div class="text-center w-full"><span class="block text-6xl font-bold text-gpc-orange mb-4 drop-shadow-md">400G</span><span class="text-slate-400 uppercase tracking-widest text-sm font-semibold">Standard Capacity</span></div>
                 <div class="text-center w-full"><span class="block text-6xl font-bold text-gpc-blue mb-4 drop-shadow-md">25+</span><span class="text-slate-400 uppercase tracking-widest text-sm font-semibold">Data Centers</span></div>
@@ -105,8 +105,8 @@
     <main class="flex-1 flex flex-col relative bg-gpc-light overflow-hidden">
         <header class="h-24 bg-white border-b border-gpc-border flex items-center justify-between px-10 z-10 shadow-sm shrink-0">
             <div>
-                <h2 id="view-title" class="text-3xl font-bold text-slate-900 tracking-tight fade-in">The Network</h2>
-                <p id="view-subtitle" class="text-base text-slate-500 mt-1 fade-in font-medium">National Footprint & Coverages</p>
+                <h2 id="view-title" class="text-3xl font-bold text-slate-900 tracking-tight fade-in">Loading...</h2>
+                <p id="view-subtitle" class="text-base text-slate-500 mt-1 fade-in font-medium">Initializing System</p>
             </div>
             <div id="stats-container" class="flex gap-8 fade-in"></div>
         </header>
@@ -116,7 +116,7 @@
                 
                 <div id="map-layer" class="absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-300">
                     <svg class="w-20 h-20 text-slate-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
-                    <h3 class="text-xl font-semibold text-slate-600 uppercase tracking-wide" id="placeholder-text">Load Map Asset</h3>
+                    <h3 class="text-xl font-semibold text-slate-600 uppercase tracking-wide" id="placeholder-text">Waiting for Data</h3>
                 </div>
 
                 <div id="html-layer" class="absolute inset-0 hidden overflow-y-auto p-12 bg-slate-50 z-0">
@@ -153,53 +153,44 @@
     </main>
 
     <script>
-        // --- JSON CONTENT STORE ---
-        const pageContent = {
-            'products': [
-                { title: "Fiber Internet", desc: "Get reliable fiber business internet backed by 24/7 network monitoring and support.", icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" },
-                { title: "SD-WAN", desc: "Improve your network performance and lower your costs, no matter the delivery method.", icon: "M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" },
-                { title: "Managed Firewall", desc: "Safeguard sensitive data and secure your connection with round-the-clock network protection.", icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" },
-                { title: "Voice & Unified Comms", desc: "Keep your team connected no matter their location, with traditional and Cloud-based solutions.", icon: "M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" },
-                { title: "Managed Ethernet", desc: "Ensure efficiency and cost savings with scalable, secure connectivity across all your locations.", icon: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" },
-                { title: "Cloud Connect", desc: "Ensure high performance with secure, reliable and direct connections to leading Cloud providers.", icon: "M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" }
-            ],
-            'why-gpc': [
-                { title: "Over a Century of Experience", desc: "Partner with a proven provider that delivers stable, future-proof solutions built on over 100 years of expertise.", icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" },
-                { title: "Unmatched Local Support", desc: "Get faster resolutions and minimal downtime by working with a dedicated, local team.", icon: "M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" },
-                { title: "24/7 Network Monitoring", desc: "Get peace of mind that comes from constant monitoring that keeps your business connected and protected.", icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" },
-                { title: "Flexible, Scalable Solutions", desc: "Grow and customize your services precisely as your business demands evolve.", icon: "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" }
-            ],
-            'case-studies': [
-                { industry: "Healthcare", client: "Boys Town", need: "Fast, reliable, flexible internet to connect two national hospitals and data centers to adjust to changing operational needs.", solution: "GPC built two dedicated 40 GB links between the data centers providing high bandwidth and low latency.", quote: "Great Plains Communications provides dependable fiber to connect our two data centers as one." },
-                { industry: "Aerospace", client: "Global Manufacturer", need: "High-bandwidth requirements, a specific custom design, and an aggressive timeline for mission-critical operations.", solution: "Customized design delivering 4x400G waves connected to a major Western data center, ahead of schedule.", quote: "Reliable connectivity for critical operations and attention to every detail were all part of a successful delivery." },
-                { industry: "Restaurants & Hospitality", client: "Regional Franchise Group", need: "Rapid growth required consistent upload speeds and uniform network performance across 14 locations.", solution: "Delivered 100x100 Mbps symmetrical broadband and business voice over our 100% fiber-optic network.", quote: "GPC's tailored approach delivered robust, uniform connectivity and improved infrastructure." }
-            ]
-        };
+        // --- GLOBAL STATE ---
+        let mapData = {};
+        let navOrder = [];
+        let pageContent = {};
 
-        // --- STATE ---
-        let mapData = {
-            'national': { id: 'national', title: 'The Network', subtitle: 'National Footprint & Coverages', placeholder: 'Load National_Map.svg', type: 'map', stats: [{ label: 'Fiber Miles', value: '20,000+', color: 'text-gpc-green' }, { label: 'States Served', value: '13', color: 'text-slate-900' }, { label: 'Data Centers', value: '25+', color: 'text-gpc-blue' }] },
-            'layer2': { id: 'layer2', title: 'Layer 2 Core', subtitle: 'High-Availability Redundant Architecture', placeholder: 'Load Layer_2_Rings.svg', type: 'map', stats: [{ label: 'Architecture', value: 'Redundant Ring', color: 'text-gpc-green' }, { label: 'City-to-City', value: '200G/400G', color: 'text-gpc-orange' }] },
-            'ip-network': { id: 'ip-network', title: 'IP Network & Peering', subtitle: 'Connected and Resilient Cloud Access', placeholder: 'Load IP_Network_Map.svg', type: 'map', stats: [{ label: 'Connections', value: 'Tier-1 Providers', color: 'text-gpc-blue' }, { label: 'Exchanges', value: 'Major IXs', color: 'text-gpc-orange' }] },
-            'nebraska': { id: 'nebraska', title: 'Nebraska Market', subtitle: 'Statewide Infrastructure Detail', placeholder: 'Load Nebraska_Detail.svg', type: 'map', stats: [{ label: 'State Fiber Miles', value: '10,000+', color: 'text-gpc-green' }, { label: 'Communities Served', value: '163', color: 'text-slate-900' }] },
-            'omaha-metro': { id: 'omaha-metro', title: 'Omaha / Council Bluffs', subtitle: 'Metro Area Street Level Routing', placeholder: 'Load Omaha_Metro.svg', type: 'map', stats: [{ label: 'Advantage', value: 'Unique Bypass Routes', color: 'text-gpc-green' }, { label: 'Key Data Center', value: '1623 Farnam', color: 'text-slate-900' }] },
-            'products': { id: 'products', title: 'Product Portfolio', subtitle: 'Fiber-Driven Enterprise Services', type: 'html', stats: [{ label: 'Core', value: 'Fiber Internet', color: 'text-gpc-green' }, { label: 'Security', value: 'Managed Firewall', color: 'text-gpc-orange' }, { label: 'Performance', value: 'Cloud Connect', color: 'text-gpc-blue' }] },
-            'why-gpc': { id: 'why-gpc', title: 'The GPC Advantage', subtitle: 'Partner with Experience', type: 'html', stats: [{ label: 'Experience', value: '100+ Years', color: 'text-slate-900' }, { label: 'Support', value: 'Unmatched Local', color: 'text-gpc-blue' }, { label: 'Reliability', value: '24/7 Monitoring', color: 'text-gpc-green' }] },
-            'case-studies': { id: 'case-studies', title: 'Client Success', subtitle: 'Proven Solutions in Action', type: 'html', stats: [{ label: 'Delivery Timeline', value: 'Fast Turn-Up', color: 'text-gpc-orange' }, { label: 'Connection Type', value: '100% Fiber', color: 'text-gpc-green' }] }
-        };
-        
-        let navOrder = ['national', 'layer2', 'ip-network', 'nebraska', 'omaha-metro', 'products', 'why-gpc', 'case-studies'];
-        
         // --- INITIALIZATION ---
-        function init() {
-            checkClientGreeting();
-            buildNavigation();
-            updateView(navOrder[0]);
+        async function init() {
             startClock();
             setupScreensaver();
             setupCanvas();
             buildKeyboard();
             setupAdminTrigger();
+            
+            await loadJSONData();
+            
+            checkClientGreeting();
+            buildNavigation();
+            if(navOrder.length > 0) {
+                updateView(navOrder[0]);
+            }
+        }
+
+        // --- FETCH JSON DATA ---
+        async function loadJSONData() {
+            try {
+                const response = await fetch('content.json');
+                if (!response.ok) throw new Error('Network response was not ok');
+                const data = await response.json();
+                
+                mapData = data.mapData;
+                navOrder = data.navOrder;
+                pageContent = data.pageContent;
+                
+            } catch (error) {
+                console.error("Failed to load content.json. Ensure you are running a local web server.", error);
+                document.getElementById('view-title').innerText = "Error Loading Data";
+                document.getElementById('view-subtitle').innerText = "Check console for CORS/Server details.";
+            }
         }
 
         // --- DYNAMIC CLIENT GREETING ---
@@ -218,7 +209,7 @@
                 };
                 if (!navOrder.includes('guest')) navOrder.unshift('guest');
             } else {
-                delete mapData['guest'];
+                if (mapData['guest']) delete mapData['guest'];
                 navOrder = navOrder.filter(id => id !== 'guest');
             }
         }
@@ -244,12 +235,11 @@
 
         function updateView(viewId) {
             const data = mapData[viewId];
+            if (!data) return;
             
-            // Nav Highlighting
             navOrder.forEach(key => document.getElementById(`nav-btn-${key}`).classList.remove('nav-item-active'));
             document.getElementById(`nav-btn-${viewId}`).classList.add('nav-item-active');
 
-            // Header Update
             const title = document.getElementById('view-title');
             const sub = document.getElementById('view-subtitle');
             title.classList.remove('fade-in'); sub.classList.remove('fade-in');
@@ -257,14 +247,12 @@
             title.innerText = data.title; sub.innerText = data.subtitle;
             title.classList.add('fade-in'); sub.classList.add('fade-in');
 
-            // Stats Update
             const stats = document.getElementById('stats-container');
             stats.innerHTML = '';
             data.stats.forEach(s => {
                 stats.innerHTML += `<div class="flex flex-col items-start border-l border-slate-200 pl-6"><span class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">${s.label}</span><span class="text-2xl font-bold ${s.color}">${s.value}</span></div>`;
             });
 
-            // Logic Router: SVG Maps vs Hardcoded HTML
             const mapLayer = document.getElementById('map-layer');
             const htmlLayer = document.getElementById('html-layer');
             const mapControls = document.getElementById('map-controls');
@@ -286,7 +274,7 @@
         function renderHTMLContent(viewId, container) {
             let html = '';
             
-            if (viewId === 'products') {
+            if (viewId === 'products' && pageContent.products) {
                 html += '<div class="grid grid-cols-3 gap-8 w-full h-full content-start fade-in">';
                 pageContent.products.forEach(p => {
                     html += `
@@ -299,7 +287,7 @@
                 });
                 html += '</div>';
             } 
-            else if (viewId === 'why-gpc') {
+            else if (viewId === 'why-gpc' && pageContent['why-gpc']) {
                 html += '<div class="grid grid-cols-2 gap-12 w-full h-full content-center max-w-5xl mx-auto fade-in">';
                 pageContent['why-gpc'].forEach(p => {
                     html += `
@@ -316,7 +304,7 @@
                 });
                 html += '</div>';
             }
-            else if (viewId === 'case-studies') {
+            else if (viewId === 'case-studies' && pageContent['case-studies']) {
                 html += '<div class="grid grid-cols-3 gap-8 w-full h-full items-center fade-in">';
                 pageContent['case-studies'].forEach(cs => {
                     html += `
@@ -458,19 +446,25 @@
             else input.value += k;
         }
 
-        function saveClient() {
+        async function saveClient() {
             const val = document.getElementById('client-name-input').value.trim();
             if (val) {
                 localStorage.setItem('gpc-client', val);
-                init(); 
+                
+                // Re-run setup logic to update nav with new client
+                checkClientGreeting();
+                buildNavigation();
                 updateView('guest');
+                
                 closeAdmin();
             }
         }
 
         function clearClient() {
             localStorage.removeItem('gpc-client');
-            init();
+            checkClientGreeting();
+            buildNavigation();
+            updateView(navOrder[0]);
             closeAdmin();
         }
 
