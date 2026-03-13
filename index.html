@@ -125,7 +125,7 @@
                 <canvas id="whiteboard" class="absolute inset-0 w-full h-full z-10 cursor-crosshair hidden"></canvas>
             </div>
 
-            <div class="absolute right-12 top-12 flex gap-3 z-20">
+            <div id="draw-controls" class="absolute right-12 top-12 flex gap-3 z-20 transition-opacity duration-300">
                 <button id="btn-clear-draw" onclick="clearCanvas()" class="hidden px-4 py-2 bg-white text-slate-600 font-bold rounded-lg shadow-floating border border-slate-200 hover:text-red-500 text-sm transition-colors">Clear Ink</button>
                 <button id="btn-toggle-draw" onclick="toggleDrawing()" class="px-4 py-2 bg-white text-gpc-blue font-bold rounded-lg shadow-floating border border-slate-200 flex items-center gap-2 text-sm transition-colors">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg> Enable Draw
@@ -224,8 +224,8 @@
                 nav.innerHTML += `
                     <button id="nav-btn-${key}" onclick="updateView('${key}')" class="w-full text-left px-5 py-4 rounded-lg border-l-4 border-transparent hover:bg-white/5 transition-all group relative ${isGuest ? 'bg-white/5 border-l-gpc-blue' : ''}">
                         <div class="flex items-center justify-between mb-2">
-                            <span class="text-[10px] font-bold tracking-widest uppercase text-slate-400 group-hover:text-slate-300">${isGuest ? 'CUSTOM BRIEFING' : `Section 0${btnNum}`}</span>
-                            <div class="w-6 h-6 rounded-full border border-slate-600 flex items-center justify-center text-[10px] text-slate-400 group-hover:border-slate-400 group-hover:text-slate-300 font-semibold">${btnNum}</div>
+                            <span class="text-[10px] font-bold tracking-widest uppercase text-slate-400 group-hover:text-slate-300">${isGuest ? 'CUSTOM BRIEFING' : ''}</span>
+                            <div class="w-6 h-6 rounded-full border border-slate-600 flex items-center justify-center text-[10px] text-slate-400 group-hover:border-slate-400 group-hover:text-slate-300 font-semibold ml-auto">${btnNum}</div>
                         </div>
                         <h3 class="text-base font-semibold text-slate-200 group-hover:text-white truncate ${isGuest ? 'text-gpc-orange' : ''}">${mapData[key].title}</h3>
                     </button>
@@ -256,15 +256,22 @@
             const mapLayer = document.getElementById('map-layer');
             const htmlLayer = document.getElementById('html-layer');
             const mapControls = document.getElementById('map-controls');
+            const drawControls = document.getElementById('draw-controls');
 
             if (data.type === 'map') {
                 htmlLayer.classList.add('hidden');
                 mapLayer.classList.remove('hidden');
                 mapControls.classList.remove('opacity-0', 'pointer-events-none');
+                drawControls.classList.remove('hidden'); // Show whiteboard tools
                 document.getElementById('placeholder-text').innerText = data.placeholder;
             } else {
                 mapLayer.classList.add('hidden');
                 mapControls.classList.add('opacity-0', 'pointer-events-none');
+                drawControls.classList.add('hidden'); // Hide whiteboard tools
+                
+                // Disable draw mode automatically if moving away from map
+                if (drawMode) toggleDrawing();
+
                 htmlLayer.classList.remove('hidden');
                 renderHTMLContent(viewId, htmlLayer);
             }
