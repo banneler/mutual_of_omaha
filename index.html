@@ -62,7 +62,7 @@
             
             <div class="grid grid-cols-3 gap-x-24 gap-y-16 fade-in w-full justify-items-center" style="animation-delay: 0.4s;">
                 <div class="text-center w-full">
-                    <span class="block text-6xl font-bold text-gpc-green mb-4 drop-shadow-md">19,000+</span>
+                    <span class="block text-6xl font-bold text-gpc-green mb-4 drop-shadow-md">20,000+</span>
                     <span class="text-slate-400 uppercase tracking-widest text-sm font-semibold">Fiber Miles</span>
                 </div>
                 <div class="text-center w-full">
@@ -291,14 +291,14 @@
             setupAdminTrigger();
         }
 
-        // --- DYNAMIC CLIENT GREETING ---
+   // --- DYNAMIC CLIENT GREETING ---
         function checkClientGreeting() {
             const savedClient = localStorage.getItem('gpc-client');
             if (savedClient) {
                 mapData['guest'] = {
                     title: `Welcome, ${savedClient}`,
-                    subtitle: 'Strategic Partnership Briefing',
-                    placeholder: `Custom Presentation for ${savedClient} Active`,
+                    subtitle: 'Strategic Partnership Architecture',
+                    placeholder: 'Load IP_Network_Map.svg', // Maps to your IP Network asset
                     stats: [
                         { label: 'Strategic Partner', value: savedClient, color: 'text-gpc-blue' },
                         { label: 'Network Base', value: '100% Fiber', color: 'text-gpc-green' }
