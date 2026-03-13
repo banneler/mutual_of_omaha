@@ -21,6 +21,7 @@
       "title": "The Network",
       "subtitle": "National Footprint & Coverages",
       "placeholder": "Load National_Map.svg",
+      "file": "National_Map.png",
       "type": "map",
       "stats": [
         { "label": "Fiber Miles", "value": "20,000+", "color": "text-gpc-green" },
@@ -33,6 +34,7 @@
       "title": "Layer 2 Core",
       "subtitle": "High-Availability Redundant Architecture",
       "placeholder": "Load Layer_2_Rings.svg",
+      "file": "Layer_2_Rings.png",
       "type": "map",
       "stats": [
         { "label": "Architecture", "value": "Redundant Ring", "color": "text-gpc-green" },
