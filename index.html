@@ -135,6 +135,17 @@
                 </button>
             </div>
 
+            <div id="insight-container" class="absolute left-12 bottom-12 z-20 hidden flex-col items-start gap-4 transition-opacity duration-300">
+                <div id="insight-modal" class="bg-gpc-navy/95 backdrop-blur-md border border-slate-700/50 rounded-2xl p-6 shadow-2xl w-80 hidden opacity-0 transition-all duration-300 translate-y-4 origin-bottom-left">
+                    <h4 class="text-gpc-orange font-bold text-sm uppercase tracking-widest mb-3">Key Insight</h4>
+                    <p id="insight-text" class="text-slate-300 text-sm leading-relaxed"></p>
+                    <button onclick="toggleInsight()" class="absolute top-4 right-4 text-slate-400 hover:text-white">✕</button>
+                </div>
+                <button onclick="toggleInsight()" class="w-14 h-14 bg-white rounded-full shadow-floating flex items-center justify-center text-gpc-orange hover:bg-gpc-orange hover:text-white transition-colors border border-slate-200">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                </button>
+            </div>
+
             <div id="map-controls" class="absolute right-12 bottom-12 flex flex-col gap-3 z-20 transition-opacity duration-300">
                 <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-floating">
                     <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">View Layers</h4>
@@ -261,6 +272,11 @@
             const htmlLayer = document.getElementById('html-layer');
             const mapControls = document.getElementById('map-controls');
             const drawControls = document.getElementById('draw-controls');
+            const insightContainer = document.getElementById('insight-container');
+            const insightModal = document.getElementById('insight-modal');
+
+            // Force hide the modal popup if it was open from a previous view
+            insightModal.classList.add('hidden', 'opacity-0', 'translate-y-4');
 
             if (data.type === 'map') {
                 htmlLayer.classList.add('hidden');
@@ -277,15 +293,24 @@
                     mapImg.classList.remove('hidden');
                     fallback.classList.add('hidden');
                 } else {
-                    // Show fallback if no file is defined in JSON
                     mapImg.classList.add('hidden');
                     fallback.classList.remove('hidden');
                     document.getElementById('placeholder-text').innerText = `Missing: ${data.id} asset`;
                 }
+
+                // Show lightbulb if insight data exists
+                if (data.insight) {
+                    insightContainer.classList.remove('hidden');
+                    document.getElementById('insight-text').innerText = data.insight;
+                } else {
+                    insightContainer.classList.add('hidden');
+                }
+
             } else {
                 mapLayer.classList.add('hidden');
                 mapControls.classList.add('opacity-0', 'pointer-events-none');
                 drawControls.classList.add('hidden'); 
+                insightContainer.classList.add('hidden'); // Hide lightbulb on HTML pages
                 
                 if (drawMode) toggleDrawing();
 
@@ -299,7 +324,6 @@
             let html = '';
             
             if (viewId === 'data-centers' && pageContent['data-centers']) {
-                // Expanded to 5 columns and tightened padding/text sizes to fit the density
                 html += '<div class="grid grid-cols-5 gap-4 w-full max-w-7xl mx-auto content-start fade-in pt-4 pb-8">';
                 pageContent['data-centers'].forEach(dc => {
                     html += `
@@ -332,7 +356,6 @@
                 html += '</div>';
             } 
             else if (viewId === 'why-gpc' && pageContent['why-gpc']) {
-                // Scaled up to max-w-6xl, larger text, larger icons, wider gaps
                 html += `
                     <div class="flex flex-col w-full h-full max-w-6xl mx-auto fade-in pt-8">
                         <div class="mb-16 border-b border-slate-200 pb-10 text-center">
@@ -390,6 +413,22 @@
             }
             
             container.innerHTML = html;
+        }
+
+        // --- TOGGLE INSIGHT POPUP ---
+        function toggleInsight() {
+            const modal = document.getElementById('insight-modal');
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0', 'translate-y-4');
+                }, 10);
+            } else {
+                modal.classList.add('opacity-0', 'translate-y-4');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                }, 300);
+            }
         }
 
         // --- WHITEBOARD CANVAS (HTML5 API) ---
@@ -527,7 +566,6 @@
         // --- HARDWARE BUTTONS & UTILS ---
         window.addEventListener('keydown', (e) => {
             const num = parseInt(e.key);
-            // Adjusted logic to map top 9 nav items to keys 1-9
             if (num > 0 && num <= 9 && num <= navOrder.length) updateView(navOrder[num - 1]);
         });
 
