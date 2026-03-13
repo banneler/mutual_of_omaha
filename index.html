@@ -305,26 +305,29 @@
                 html += '</div>';
             }
             else if (viewId === 'case-studies' && pageContent['case-studies']) {
-                html += '<div class="grid grid-cols-3 gap-8 w-full h-full items-center fade-in">';
+                html += '<div class="grid grid-cols-3 gap-8 w-full h-full items-start fade-in">';
                 pageContent['case-studies'].forEach(cs => {
                     html += `
-                        <div class="bg-white border border-slate-200 p-8 rounded-2xl shadow-sm flex flex-col h-full hover:-translate-y-1 transition-transform">
-                            <span class="text-gpc-orange font-bold text-xs uppercase tracking-widest mb-2">${cs.industry}</span>
-                            <h3 class="text-2xl font-bold text-slate-900 mb-8">${cs.client}</h3>
-                            
-                            <div class="mb-6">
-                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">The Challenge</h4>
-                                <p class="text-slate-600 text-sm leading-relaxed">${cs.need}</p>
-                            </div>
-                            
-                            <div class="mb-8 flex-1">
-                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">The Solution</h4>
-                                <p class="text-slate-600 text-sm leading-relaxed">${cs.solution}</p>
-                            </div>
-                            
-                            <div class="bg-slate-50 border border-slate-100 p-5 rounded-xl relative mt-auto">
-                                <span class="text-4xl text-slate-200 font-serif absolute -top-4 -left-1">"</span>
-                                <p class="text-sm italic font-medium text-slate-700 leading-relaxed relative z-10">${cs.quote}</p>
+                        <div class="bg-white border border-slate-200 rounded-2xl shadow-sm flex flex-col h-full hover:-translate-y-1 transition-transform overflow-hidden">
+                            <img src="${cs.image}" alt="${cs.client}" class="w-full h-48 object-cover bg-slate-100">
+                            <div class="p-8 flex flex-col flex-1">
+                                <span class="text-gpc-orange font-bold text-xs uppercase tracking-widest mb-2">${cs.industry}</span>
+                                <h3 class="text-2xl font-bold text-slate-900 mb-8">${cs.client}</h3>
+                                
+                                <div class="mb-6">
+                                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">The Challenge</h4>
+                                    <p class="text-slate-600 text-sm leading-relaxed">${cs.need}</p>
+                                </div>
+                                
+                                <div class="mb-8 flex-1">
+                                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">The Solution</h4>
+                                    <p class="text-slate-600 text-sm leading-relaxed">${cs.solution}</p>
+                                </div>
+                                
+                                <div class="bg-slate-50 border border-slate-100 p-5 rounded-xl relative mt-auto">
+                                    <span class="text-4xl text-slate-200 font-serif absolute -top-4 -left-1">"</span>
+                                    <p class="text-sm italic font-medium text-slate-700 leading-relaxed relative z-10">${cs.quote}</p>
+                                </div>
                             </div>
                         </div>
                     `;
@@ -451,7 +454,6 @@
             if (val) {
                 localStorage.setItem('gpc-client', val);
                 
-                // Re-run setup logic to update nav with new client
                 checkClientGreeting();
                 buildNavigation();
                 updateView('guest');
