@@ -31,14 +31,11 @@
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #1E40AF; border-radius: 10px; }
         
-        /* Keyboard Styles */
         .key { transition: all 0.1s; cursor: pointer; user-select: none; }
         .key:active { transform: scale(0.95); background-color: #CBD5E1; }
         
-        /* Screensaver Animation */
         .ken-burns { animation: panZoom 30s infinite alternate linear; }
         @keyframes panZoom { 0% { transform: scale(1) translate(0, 0); } 100% { transform: scale(1.1) translate(-2%, -2%); } }
-        /* Animated Background Grid */
         @keyframes gridMove {
             0% { transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-200px); }
             100% { transform: perspective(500px) rotateX(60deg) translateY(0px) translateZ(-200px); }
@@ -47,51 +44,28 @@
 </head>
 <body class="bg-slate-100 text-slate-800 h-screen w-screen overflow-hidden flex select-none font-sans antialiased" oncontextmenu="return false;">
 
-<div id="screensaver" class="fixed inset-0 z-50 bg-gpc-navy hidden flex-col items-center justify-center transition-opacity duration-1000 opacity-0 cursor-pointer overflow-hidden">
-        
+    <div id="screensaver" class="fixed inset-0 z-50 bg-gpc-navy hidden flex-col items-center justify-center transition-opacity duration-1000 opacity-0 cursor-pointer overflow-hidden">
         <div class="absolute inset-0 opacity-20 ken-burns" style="background-image: radial-gradient(circle at center, #1E40AF 0%, transparent 70%);"></div>
         <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px); background-size: 50px 50px; animation: gridMove 20s linear infinite;"></div>
 
         <div class="relative z-10 w-full max-w-7xl mx-auto px-8 flex flex-col items-center justify-center mt-32">
-            
             <img src="GPC-White-1-1.webp" alt="Great Plains Communications" class="h-40 md:h-48 w-auto object-contain fade-in mb-8 drop-shadow-2xl">
-            
             <h2 class="text-2xl md:text-3xl font-light text-slate-300 tracking-wide mb-20 fade-in drop-shadow text-center" style="animation-delay: 0.2s;">
                 Fiber Connectivity and Communications Solutions for the Modern Business
             </h2>
             
             <div class="grid grid-cols-3 gap-x-24 gap-y-16 fade-in w-full justify-items-center" style="animation-delay: 0.4s;">
-                <div class="text-center w-full">
-                    <span class="block text-6xl font-bold text-gpc-green mb-4 drop-shadow-md">20,000+</span>
-                    <span class="text-slate-400 uppercase tracking-widest text-sm font-semibold">Fiber Miles</span>
-                </div>
-                <div class="text-center w-full">
-                    <span class="block text-6xl font-bold text-white mb-4 drop-shadow-md">13</span>
-                    <span class="text-slate-400 uppercase tracking-widest text-sm font-semibold">States Served</span>
-                </div>
-                <div class="text-center w-full">
-                    <span class="block text-6xl font-bold text-gpc-orange mb-4 drop-shadow-md">400G</span>
-                    <span class="text-slate-400 uppercase tracking-widest text-sm font-semibold">Standard Capacity</span>
-                </div>
-                <div class="text-center w-full">
-                    <span class="block text-6xl font-bold text-gpc-blue mb-4 drop-shadow-md">25+</span>
-                    <span class="text-slate-400 uppercase tracking-widest text-sm font-semibold">Data Centers</span>
-                </div>
-                <div class="text-center w-full">
-                    <span class="block text-6xl font-bold text-white mb-4 drop-shadow-md">100+</span>
-                    <span class="text-slate-400 uppercase tracking-widest text-sm font-semibold">Years Experience</span>
-                </div>
-                <div class="text-center w-full">
-                    <span class="block text-6xl font-bold text-gpc-green mb-4 drop-shadow-md">24/7</span>
-                    <span class="text-slate-400 uppercase tracking-widest text-sm font-semibold">Network Monitoring</span>
-                </div>
+                <div class="text-center w-full"><span class="block text-6xl font-bold text-gpc-green mb-4 drop-shadow-md">20,000+</span><span class="text-slate-400 uppercase tracking-widest text-sm font-semibold">Fiber Miles</span></div>
+                <div class="text-center w-full"><span class="block text-6xl font-bold text-white mb-4 drop-shadow-md">13</span><span class="text-slate-400 uppercase tracking-widest text-sm font-semibold">States Served</span></div>
+                <div class="text-center w-full"><span class="block text-6xl font-bold text-gpc-orange mb-4 drop-shadow-md">400G</span><span class="text-slate-400 uppercase tracking-widest text-sm font-semibold">Standard Capacity</span></div>
+                <div class="text-center w-full"><span class="block text-6xl font-bold text-gpc-blue mb-4 drop-shadow-md">25+</span><span class="text-slate-400 uppercase tracking-widest text-sm font-semibold">Data Centers</span></div>
+                <div class="text-center w-full"><span class="block text-6xl font-bold text-white mb-4 drop-shadow-md">100+</span><span class="text-slate-400 uppercase tracking-widest text-sm font-semibold">Years Experience</span></div>
+                <div class="text-center w-full"><span class="block text-6xl font-bold text-gpc-green mb-4 drop-shadow-md">24/7</span><span class="text-slate-400 uppercase tracking-widest text-sm font-semibold">Network Monitoring</span></div>
             </div>
         </div>
         
         <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center z-10 animate-pulse w-full text-center pointer-events-none">
-            <svg class="w-8 h-8 text-gpc-orange mb-3 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path>
-            </svg>
+            <svg class="w-8 h-8 text-gpc-orange mb-3 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path></svg>
             <p class="text-slate-300 font-bold tracking-[0.3em] text-lg drop-shadow-lg">TOUCH SCREEN TO EXPLORE</p>
         </div>
     </div>
@@ -102,18 +76,13 @@
                 <h2 class="text-2xl font-bold text-slate-800">Configure Client Greeting</h2>
                 <button onclick="closeAdmin()" class="text-slate-400 hover:text-red-500 font-bold text-xl">✕</button>
             </div>
-            
             <input type="text" id="client-name-input" class="w-full text-4xl font-bold text-center text-gpc-blue border-b-2 border-slate-200 focus:border-gpc-orange outline-none bg-transparent mb-8 pb-2" placeholder="Enter Client Name..." readonly>
-            
             <div class="flex flex-col gap-2 bg-slate-100 p-4 rounded-xl">
                 <div class="flex justify-center gap-2" id="row-1"></div>
                 <div class="flex justify-center gap-2" id="row-2"></div>
                 <div class="flex justify-center gap-2" id="row-3"></div>
-                <div class="flex justify-center gap-2 mt-2">
-                    <div class="key bg-white shadow rounded-lg h-14 w-96 flex items-center justify-center font-bold text-slate-700 text-xl" onclick="typeKey(' ')">SPACE</div>
-                </div>
+                <div class="flex justify-center gap-2 mt-2"><div class="key bg-white shadow rounded-lg h-14 w-96 flex items-center justify-center font-bold text-slate-700 text-xl" onclick="typeKey(' ')">SPACE</div></div>
             </div>
-
             <div class="flex justify-end gap-4 mt-8 border-t border-slate-100 pt-6">
                 <button onclick="clearClient()" class="px-6 py-3 rounded-lg font-bold text-slate-500 hover:bg-slate-100 transition-colors">Clear Saved Data</button>
                 <button onclick="saveClient()" class="px-8 py-3 rounded-lg font-bold text-white bg-gpc-orange hover:bg-orange-700 transition-colors shadow-lg">Save & Initialize</button>
@@ -126,9 +95,7 @@
             <img src="GPC-White-1-1.webp" alt="GPC Logo" class="h-24 w-auto object-contain mb-6 drop-shadow-lg transition-transform hover:scale-105">
             <div class="w-16 h-1.5 bg-gpc-blue rounded-full"></div>
         </div>
-
         <nav class="flex-1 px-4 py-2 flex flex-col gap-2 overflow-y-auto" id="nav-menu"></nav>
-
         <div class="p-6 text-sm text-slate-400 border-t border-slate-700/50 flex justify-between items-center font-semibold">
             <span>GPC Enterprise</span>
             <span id="clock" class="text-slate-300">00:00</span>
@@ -136,7 +103,6 @@
     </aside>
 
     <main class="flex-1 flex flex-col relative bg-gpc-light overflow-hidden">
-        
         <header class="h-24 bg-white border-b border-gpc-border flex items-center justify-between px-10 z-10 shadow-sm shrink-0">
             <div>
                 <h2 id="view-title" class="text-3xl font-bold text-slate-900 tracking-tight fade-in">The Network</h2>
@@ -146,12 +112,15 @@
         </header>
 
         <section class="flex-1 relative overflow-hidden flex items-center justify-center p-8">
-            
-            <div id="map-visualizer" class="w-full h-full bg-white border border-gpc-border rounded-2xl flex flex-col items-center justify-center shadow-elegant relative overflow-hidden">
-                <div class="text-center z-0 pointer-events-none">
+            <div class="w-full h-full bg-white border border-gpc-border rounded-2xl shadow-elegant relative overflow-hidden flex">
+                
+                <div id="map-layer" class="absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-300">
                     <svg class="w-20 h-20 text-slate-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
                     <h3 class="text-xl font-semibold text-slate-600 uppercase tracking-wide" id="placeholder-text">Load Map Asset</h3>
                 </div>
+
+                <div id="html-layer" class="absolute inset-0 hidden overflow-y-auto p-12 bg-slate-50 z-0">
+                    </div>
 
                 <canvas id="whiteboard" class="absolute inset-0 w-full h-full z-10 cursor-crosshair hidden"></canvas>
             </div>
@@ -159,25 +128,24 @@
             <div class="absolute right-12 top-12 flex gap-3 z-20">
                 <button id="btn-clear-draw" onclick="clearCanvas()" class="hidden px-4 py-2 bg-white text-slate-600 font-bold rounded-lg shadow-floating border border-slate-200 hover:text-red-500 text-sm transition-colors">Clear Ink</button>
                 <button id="btn-toggle-draw" onclick="toggleDrawing()" class="px-4 py-2 bg-white text-gpc-blue font-bold rounded-lg shadow-floating border border-slate-200 flex items-center gap-2 text-sm transition-colors">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
-                    Enable Draw
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg> Enable Draw
                 </button>
             </div>
 
-            <div class="absolute right-12 bottom-12 flex flex-col gap-3 z-20">
+            <div id="map-controls" class="absolute right-12 bottom-12 flex flex-col gap-3 z-20 transition-opacity duration-300">
                 <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-floating">
                     <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">View Layers</h4>
                     <label class="flex items-center justify-between gap-6 mb-4 cursor-pointer group">
                         <span class="text-sm font-semibold text-slate-700">Lit Fiber Networks</span>
-                        <div class="relative"><input type="checkbox" checked class="sr-only peer"><div class="w-11 h-6 bg-slate-200 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gpc-green"></div></div>
+                        <div class="relative"><input type="checkbox" checked class="sr-only peer"><div class="w-11 h-6 bg-slate-200 rounded-full peer peer-checked:after:translate-x-full after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gpc-green"></div></div>
                     </label>
                     <label class="flex items-center justify-between gap-6 mb-4 cursor-pointer group">
                         <span class="text-sm font-semibold text-slate-700">400G Standard Routes</span>
-                        <div class="relative"><input type="checkbox" checked class="sr-only peer"><div class="w-11 h-6 bg-slate-200 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gpc-orange"></div></div>
+                        <div class="relative"><input type="checkbox" checked class="sr-only peer"><div class="w-11 h-6 bg-slate-200 rounded-full peer peer-checked:after:translate-x-full after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gpc-orange"></div></div>
                     </label>
                     <label class="flex items-center justify-between gap-6 cursor-pointer group">
                         <span class="text-sm font-semibold text-slate-700">Data Centers & 5G Towers</span>
-                        <div class="relative"><input type="checkbox" checked class="sr-only peer"><div class="w-11 h-6 bg-slate-200 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gpc-blue"></div></div>
+                        <div class="relative"><input type="checkbox" checked class="sr-only peer"><div class="w-11 h-6 bg-slate-200 rounded-full peer peer-checked:after:translate-x-full after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gpc-blue"></div></div>
                     </label>
                 </div>
             </div>
@@ -185,96 +153,39 @@
     </main>
 
     <script>
-        // --- DATA & STATE ---
+        // --- JSON CONTENT STORE ---
+        const pageContent = {
+            'products': [
+                { title: "Fiber Internet", desc: "Get reliable fiber business internet backed by 24/7 network monitoring and support.", icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" },
+                { title: "SD-WAN", desc: "Improve your network performance and lower your costs, no matter the delivery method.", icon: "M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" },
+                { title: "Managed Firewall", desc: "Safeguard sensitive data and secure your connection with round-the-clock network protection.", icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" },
+                { title: "Voice & Unified Comms", desc: "Keep your team connected no matter their location, with traditional and Cloud-based solutions.", icon: "M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" },
+                { title: "Managed Ethernet", desc: "Ensure efficiency and cost savings with scalable, secure connectivity across all your locations.", icon: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" },
+                { title: "Cloud Connect", desc: "Ensure high performance with secure, reliable and direct connections to leading Cloud providers.", icon: "M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" }
+            ],
+            'why-gpc': [
+                { title: "Over a Century of Experience", desc: "Partner with a proven provider that delivers stable, future-proof solutions built on over 100 years of expertise.", icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" },
+                { title: "Unmatched Local Support", desc: "Get faster resolutions and minimal downtime by working with a dedicated, local team.", icon: "M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" },
+                { title: "24/7 Network Monitoring", desc: "Get peace of mind that comes from constant monitoring that keeps your business connected and protected.", icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" },
+                { title: "Flexible, Scalable Solutions", desc: "Grow and customize your services precisely as your business demands evolve.", icon: "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" }
+            ],
+            'case-studies': [
+                { industry: "Healthcare", client: "Boys Town", need: "Fast, reliable, flexible internet to connect two national hospitals and data centers to adjust to changing operational needs.", solution: "GPC built two dedicated 40 GB links between the data centers providing high bandwidth and low latency.", quote: "Great Plains Communications provides dependable fiber to connect our two data centers as one." },
+                { industry: "Aerospace", client: "Global Manufacturer", need: "High-bandwidth requirements, a specific custom design, and an aggressive timeline for mission-critical operations.", solution: "Customized design delivering 4x400G waves connected to a major Western data center, ahead of schedule.", quote: "Reliable connectivity for critical operations and attention to every detail were all part of a successful delivery." },
+                { industry: "Restaurants & Hospitality", client: "Regional Franchise Group", need: "Rapid growth required consistent upload speeds and uniform network performance across 14 locations.", solution: "Delivered 100x100 Mbps symmetrical broadband and business voice over our 100% fiber-optic network.", quote: "GPC's tailored approach delivered robust, uniform connectivity and improved infrastructure." }
+            ]
+        };
+
+        // --- STATE ---
         let mapData = {
-            'national': {
-                id: 'national',
-                title: 'The Network',
-                subtitle: 'National Footprint & Coverages',
-                placeholder: 'National Map Active',
-                stats: [
-                    { label: 'Fiber Miles', value: '20,000+', color: 'text-gpc-green' },
-                    { label: 'States Served', value: '13', color: 'text-slate-900' },
-                    { label: 'Data Centers', value: '25+', color: 'text-gpc-blue' },
-                    { label: 'Capacity', value: '400 Gbps', color: 'text-gpc-orange' }
-                ]
-            },
-            'layer2': {
-                id: 'layer2',
-                title: 'Layer 2 Core',
-                subtitle: 'High-Availability Redundant Architecture',
-                placeholder: 'Layer 2 Rings Active',
-                stats: [
-                    { label: 'Architecture', value: 'Redundant Ring', color: 'text-gpc-green' },
-                    { label: 'City-to-City', value: '200G/400G', color: 'text-gpc-orange' },
-                    { label: 'Scalability', value: '10/100/100G', color: 'text-slate-900' }
-                ]
-            },
-            'ip-network': {
-                id: 'ip-network',
-                title: 'IP Network & Peering',
-                subtitle: 'Connected and Resilient Cloud Access',
-                placeholder: 'IP Network Map Active',
-                stats: [
-                    { label: 'Connections', value: 'Tier-1 Providers', color: 'text-gpc-blue' },
-                    { label: 'Exchanges', value: 'Major IXs', color: 'text-gpc-orange' },
-                    { label: 'Routing', value: 'Lowest-Latency', color: 'text-gpc-green' }
-                ]
-            },
-            'nebraska': {
-                id: 'nebraska',
-                title: 'Nebraska Market',
-                subtitle: 'Statewide Infrastructure Detail',
-                placeholder: 'Nebraska Detail Active',
-                stats: [
-                    { label: 'State Fiber Miles', value: '10,000+', color: 'text-gpc-green' },
-                    { label: 'Communities Served', value: '163', color: 'text-slate-900' },
-                    { label: 'Omaha Metro', value: '500+ Miles', color: 'text-gpc-blue' }
-                ]
-            },
-            'omaha-metro': {
-                id: 'omaha-metro',
-                title: 'Omaha / Council Bluffs',
-                subtitle: 'Metro Area Street Level Routing',
-                placeholder: 'Omaha Metro Active',
-                stats: [
-                    { label: 'Advantage', value: 'Unique Bypass Routes', color: 'text-gpc-green' },
-                    { label: 'Key Data Center', value: '1623 Farnam', color: 'text-slate-900' }
-                ]
-            },
-            'products': {
-                id: 'products',
-                title: 'Product Portfolio',
-                subtitle: 'Fiber-Driven Enterprise Services',
-                placeholder: 'Product List Active',
-                stats: [
-                    { label: 'Core', value: 'Fiber Internet', color: 'text-gpc-green' },
-                    { label: 'Security', value: 'Managed Firewall', color: 'text-gpc-orange' },
-                    { label: 'Network', value: 'SD-WAN', color: 'text-gpc-blue' },
-                    { label: 'Performance', value: 'Cloud Connect', color: 'text-slate-900' }
-                ]
-            },
-            'why-gpc': {
-                id: 'why-gpc',
-                title: 'The GPC Advantage',
-                subtitle: 'Partner with Experience',
-                placeholder: 'Why Businesses Choose GPC Active',
-                stats: [
-                    { label: 'Experience', value: '100+ Years', color: 'text-slate-900' },
-                    { label: 'Support', value: 'Unmatched Local', color: 'text-gpc-blue' },
-                    { label: 'Reliability', value: '24/7 Monitoring', color: 'text-gpc-green' }
-                ]
-            },
-            'case-studies': {
-                id: 'case-studies',
-                title: 'Client Success',
-                subtitle: 'Aerospace & Hospitality Profiles',
-                placeholder: 'Case Studies Carousel Active',
-                stats: [
-                    { label: 'Delivery Timeline', value: 'Fast Turn-Up', color: 'text-gpc-orange' },
-                    { label: 'Connection Type', value: '100% Fiber', color: 'text-gpc-green' }
-                ]
-            }
+            'national': { id: 'national', title: 'The Network', subtitle: 'National Footprint & Coverages', placeholder: 'Load National_Map.svg', type: 'map', stats: [{ label: 'Fiber Miles', value: '20,000+', color: 'text-gpc-green' }, { label: 'States Served', value: '13', color: 'text-slate-900' }, { label: 'Data Centers', value: '25+', color: 'text-gpc-blue' }] },
+            'layer2': { id: 'layer2', title: 'Layer 2 Core', subtitle: 'High-Availability Redundant Architecture', placeholder: 'Load Layer_2_Rings.svg', type: 'map', stats: [{ label: 'Architecture', value: 'Redundant Ring', color: 'text-gpc-green' }, { label: 'City-to-City', value: '200G/400G', color: 'text-gpc-orange' }] },
+            'ip-network': { id: 'ip-network', title: 'IP Network & Peering', subtitle: 'Connected and Resilient Cloud Access', placeholder: 'Load IP_Network_Map.svg', type: 'map', stats: [{ label: 'Connections', value: 'Tier-1 Providers', color: 'text-gpc-blue' }, { label: 'Exchanges', value: 'Major IXs', color: 'text-gpc-orange' }] },
+            'nebraska': { id: 'nebraska', title: 'Nebraska Market', subtitle: 'Statewide Infrastructure Detail', placeholder: 'Load Nebraska_Detail.svg', type: 'map', stats: [{ label: 'State Fiber Miles', value: '10,000+', color: 'text-gpc-green' }, { label: 'Communities Served', value: '163', color: 'text-slate-900' }] },
+            'omaha-metro': { id: 'omaha-metro', title: 'Omaha / Council Bluffs', subtitle: 'Metro Area Street Level Routing', placeholder: 'Load Omaha_Metro.svg', type: 'map', stats: [{ label: 'Advantage', value: 'Unique Bypass Routes', color: 'text-gpc-green' }, { label: 'Key Data Center', value: '1623 Farnam', color: 'text-slate-900' }] },
+            'products': { id: 'products', title: 'Product Portfolio', subtitle: 'Fiber-Driven Enterprise Services', type: 'html', stats: [{ label: 'Core', value: 'Fiber Internet', color: 'text-gpc-green' }, { label: 'Security', value: 'Managed Firewall', color: 'text-gpc-orange' }, { label: 'Performance', value: 'Cloud Connect', color: 'text-gpc-blue' }] },
+            'why-gpc': { id: 'why-gpc', title: 'The GPC Advantage', subtitle: 'Partner with Experience', type: 'html', stats: [{ label: 'Experience', value: '100+ Years', color: 'text-slate-900' }, { label: 'Support', value: 'Unmatched Local', color: 'text-gpc-blue' }, { label: 'Reliability', value: '24/7 Monitoring', color: 'text-gpc-green' }] },
+            'case-studies': { id: 'case-studies', title: 'Client Success', subtitle: 'Proven Solutions in Action', type: 'html', stats: [{ label: 'Delivery Timeline', value: 'Fast Turn-Up', color: 'text-gpc-orange' }, { label: 'Connection Type', value: '100% Fiber', color: 'text-gpc-green' }] }
         };
         
         let navOrder = ['national', 'layer2', 'ip-network', 'nebraska', 'omaha-metro', 'products', 'why-gpc', 'case-studies'];
@@ -291,14 +202,15 @@
             setupAdminTrigger();
         }
 
-   // --- DYNAMIC CLIENT GREETING ---
+        // --- DYNAMIC CLIENT GREETING ---
         function checkClientGreeting() {
             const savedClient = localStorage.getItem('gpc-client');
             if (savedClient) {
                 mapData['guest'] = {
                     title: `Welcome, ${savedClient}`,
                     subtitle: 'Strategic Partnership Architecture',
-                    placeholder: 'Load IP_Network_Map.svg', // Maps to your IP Network asset
+                    placeholder: 'Load IP_Network_Map.svg', 
+                    type: 'map',
                     stats: [
                         { label: 'Strategic Partner', value: savedClient, color: 'text-gpc-blue' },
                         { label: 'Network Base', value: '100% Fiber', color: 'text-gpc-green' }
@@ -318,7 +230,6 @@
             navOrder.forEach((key, i) => {
                 const btnNum = i + 1;
                 const isGuest = key === 'guest';
-                
                 nav.innerHTML += `
                     <button id="nav-btn-${key}" onclick="updateView('${key}')" class="w-full text-left px-5 py-4 rounded-lg border-l-4 border-transparent hover:bg-white/5 transition-all group relative ${isGuest ? 'bg-white/5 border-l-gpc-blue' : ''}">
                         <div class="flex items-center justify-between mb-2">
@@ -332,25 +243,108 @@
         }
 
         function updateView(viewId) {
+            const data = mapData[viewId];
+            
+            // Nav Highlighting
             navOrder.forEach(key => document.getElementById(`nav-btn-${key}`).classList.remove('nav-item-active'));
             document.getElementById(`nav-btn-${viewId}`).classList.add('nav-item-active');
 
+            // Header Update
             const title = document.getElementById('view-title');
             const sub = document.getElementById('view-subtitle');
             title.classList.remove('fade-in'); sub.classList.remove('fade-in');
             void title.offsetWidth; 
-            
-            title.innerText = mapData[viewId].title; 
-            sub.innerText = mapData[viewId].subtitle;
-            
+            title.innerText = data.title; sub.innerText = data.subtitle;
             title.classList.add('fade-in'); sub.classList.add('fade-in');
 
+            // Stats Update
             const stats = document.getElementById('stats-container');
             stats.innerHTML = '';
-            mapData[viewId].stats.forEach(s => {
+            data.stats.forEach(s => {
                 stats.innerHTML += `<div class="flex flex-col items-start border-l border-slate-200 pl-6"><span class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">${s.label}</span><span class="text-2xl font-bold ${s.color}">${s.value}</span></div>`;
             });
-            document.getElementById('placeholder-text').innerText = mapData[viewId].placeholder;
+
+            // Logic Router: SVG Maps vs Hardcoded HTML
+            const mapLayer = document.getElementById('map-layer');
+            const htmlLayer = document.getElementById('html-layer');
+            const mapControls = document.getElementById('map-controls');
+
+            if (data.type === 'map') {
+                htmlLayer.classList.add('hidden');
+                mapLayer.classList.remove('hidden');
+                mapControls.classList.remove('opacity-0', 'pointer-events-none');
+                document.getElementById('placeholder-text').innerText = data.placeholder;
+            } else {
+                mapLayer.classList.add('hidden');
+                mapControls.classList.add('opacity-0', 'pointer-events-none');
+                htmlLayer.classList.remove('hidden');
+                renderHTMLContent(viewId, htmlLayer);
+            }
+        }
+
+        // --- HTML CONTENT RENDERER ---
+        function renderHTMLContent(viewId, container) {
+            let html = '';
+            
+            if (viewId === 'products') {
+                html += '<div class="grid grid-cols-3 gap-8 w-full h-full content-start fade-in">';
+                pageContent.products.forEach(p => {
+                    html += `
+                        <div class="bg-white border border-slate-200 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                            <svg class="w-8 h-8 text-gpc-blue mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${p.icon}"></path></svg>
+                            <h3 class="text-lg font-bold text-slate-800 mb-2">${p.title}</h3>
+                            <p class="text-sm text-slate-500 leading-relaxed">${p.desc}</p>
+                        </div>
+                    `;
+                });
+                html += '</div>';
+            } 
+            else if (viewId === 'why-gpc') {
+                html += '<div class="grid grid-cols-2 gap-12 w-full h-full content-center max-w-5xl mx-auto fade-in">';
+                pageContent['why-gpc'].forEach(p => {
+                    html += `
+                        <div class="flex gap-6 items-start">
+                            <div class="bg-gpc-green/10 p-4 rounded-full text-gpc-green shrink-0">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${p.icon}"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-slate-800 mb-3">${p.title}</h3>
+                                <p class="text-base text-slate-500 leading-relaxed">${p.desc}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+                html += '</div>';
+            }
+            else if (viewId === 'case-studies') {
+                html += '<div class="grid grid-cols-3 gap-8 w-full h-full items-center fade-in">';
+                pageContent['case-studies'].forEach(cs => {
+                    html += `
+                        <div class="bg-white border border-slate-200 p-8 rounded-2xl shadow-sm flex flex-col h-full hover:-translate-y-1 transition-transform">
+                            <span class="text-gpc-orange font-bold text-xs uppercase tracking-widest mb-2">${cs.industry}</span>
+                            <h3 class="text-2xl font-bold text-slate-900 mb-8">${cs.client}</h3>
+                            
+                            <div class="mb-6">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">The Challenge</h4>
+                                <p class="text-slate-600 text-sm leading-relaxed">${cs.need}</p>
+                            </div>
+                            
+                            <div class="mb-8 flex-1">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">The Solution</h4>
+                                <p class="text-slate-600 text-sm leading-relaxed">${cs.solution}</p>
+                            </div>
+                            
+                            <div class="bg-slate-50 border border-slate-100 p-5 rounded-xl relative mt-auto">
+                                <span class="text-4xl text-slate-200 font-serif absolute -top-4 -left-1">"</span>
+                                <p class="text-sm italic font-medium text-slate-700 leading-relaxed relative z-10">${cs.quote}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+                html += '</div>';
+            }
+            
+            container.innerHTML = html;
         }
 
         // --- WHITEBOARD CANVAS (HTML5 API) ---
