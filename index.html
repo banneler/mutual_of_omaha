@@ -52,11 +52,11 @@
         <div class="absolute inset-0 opacity-20 ken-burns" style="background-image: radial-gradient(circle at center, #1E40AF 0%, transparent 70%);"></div>
         <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px); background-size: 50px 50px; animation: gridMove 20s linear infinite;"></div>
 
-        <div class="relative z-10 flex flex-col items-center justify-center text-center w-full max-w-7xl px-8 flex-1">
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-8 flex flex-col items-center justify-center">
             
             <img src="GPC-White-1-1.webp" alt="Great Plains Communications" class="h-40 md:h-48 w-auto object-contain fade-in mb-8 drop-shadow-2xl">
             
-            <h2 class="text-2xl md:text-3xl font-light text-slate-300 tracking-wide mb-20 fade-in drop-shadow" style="animation-delay: 0.2s;">
+            <h2 class="text-2xl md:text-3xl font-light text-slate-300 tracking-wide mb-20 fade-in drop-shadow text-center" style="animation-delay: 0.2s;">
                 Fiber Connectivity and Communications Solutions for the Modern Business
             </h2>
             
@@ -88,7 +88,7 @@
             </div>
         </div>
         
-        <div class="absolute bottom-12 flex flex-col items-center z-10 animate-pulse">
+        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center z-10 animate-pulse w-full text-center pointer-events-none">
             <svg class="w-8 h-8 text-gpc-orange mb-3 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path>
             </svg>
@@ -277,7 +277,6 @@
             }
         };
         
-        // Full 8-item navigation array
         let navOrder = ['national', 'layer2', 'ip-network', 'nebraska', 'omaha-metro', 'products', 'why-gpc', 'case-studies'];
         
         // --- INITIALIZATION ---
@@ -339,7 +338,7 @@
             const title = document.getElementById('view-title');
             const sub = document.getElementById('view-subtitle');
             title.classList.remove('fade-in'); sub.classList.remove('fade-in');
-            void title.offsetWidth; // reflow
+            void title.offsetWidth; 
             
             title.innerText = mapData[viewId].title; 
             sub.innerText = mapData[viewId].subtitle;
