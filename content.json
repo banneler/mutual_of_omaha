@@ -156,6 +156,7 @@
     ],
     "case-studies": [
       {
+        "image": "boystown.webp",
         "industry": "Healthcare",
         "client": "Boys Town",
         "need": "Connect hospitals and data centers to handle rapid growth and changing IT needs.",
@@ -163,6 +164,7 @@
         "quote": "Great Plains Communications provides dependable fiber to connect our two data centers as one."
       },
       {
+        "image": "aerospace.webp",
         "industry": "Aerospace",
         "client": "Global Manufacturer",
         "need": "High-bandwidth requirements, a specific custom design, and an aggressive timeline for mission-critical operations.",
@@ -170,6 +172,7 @@
         "quote": "Reliable connectivity for critical operations and attention to every detail were all part of a successful delivery."
       },
       {
+        "image": "hospitality.webp",
         "industry": "Restaurants & Hospitality",
         "client": "Regional Franchise Group",
         "need": "Rapid growth required consistent upload speeds and uniform network performance across 14 locations.",
