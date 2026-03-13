@@ -5,6 +5,7 @@
     "ip-network",
     "nebraska",
     "omaha-metro",
+    "data-centers",
     "products",
     "why-gpc",
     "case-studies"
@@ -66,6 +67,16 @@
         { "label": "Key Data Center", "value": "1623 Farnam", "color": "text-slate-900" }
       ]
     },
+    "data-centers": {
+      "id": "data-centers",
+      "title": "Data Centers",
+      "subtitle": "Colocation & Interconnection Facilities",
+      "type": "html",
+      "stats": [
+        { "label": "Total Facilities", "value": "25+", "color": "text-gpc-blue" },
+        { "label": "Network Integration", "value": "100% Fiber", "color": "text-gpc-green" }
+      ]
+    },
     "products": {
       "id": "products",
       "title": "Product Portfolio",
@@ -100,6 +111,17 @@
     }
   },
   "pageContent": {
+    "data-centers": [
+      { "city": "Omaha, NE", "name": "1623 Farnam" },
+      { "city": "Omaha, NE", "name": "GPC Omaha Core" },
+      { "city": "Lincoln, NE", "name": "Lincoln Edge Facility" },
+      { "city": "Council Bluffs, IA", "name": "CB Interconnect" },
+      { "city": "Des Moines, IA", "name": "Des Moines Hub" },
+      { "city": "Kansas City, MO", "name": "KC Regional Center" },
+      { "city": "Chicago, IL", "name": "Chicago Peering Exchange" },
+      { "city": "Denver, CO", "name": "Denver West Core" },
+      { "city": "Minneapolis, MN", "name": "North Interconnect" }
+    ],
     "products": [
       {
         "title": "Fiber Internet",
