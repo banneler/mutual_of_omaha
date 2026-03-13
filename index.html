@@ -91,12 +91,12 @@
     </div>
 
     <aside class="w-80 bg-gpc-navy flex flex-col z-20 shadow-floating relative shrink-0">
-        <div class="p-8 pb-6 cursor-pointer" id="brand-trigger">
+        <div class="p-8 pb-6 cursor-pointer shrink-0" id="brand-trigger">
             <img src="GPC-White-1-1.webp" alt="GPC Logo" class="h-24 w-auto object-contain mb-6 drop-shadow-lg transition-transform hover:scale-105">
             <div class="w-16 h-1.5 bg-gpc-blue rounded-full"></div>
         </div>
         <nav class="flex-1 px-4 py-2 flex flex-col gap-2 overflow-y-auto" id="nav-menu"></nav>
-        <div class="p-6 text-sm text-slate-400 border-t border-slate-700/50 flex justify-between items-center font-semibold">
+        <div class="p-6 text-sm text-slate-400 border-t border-slate-700/50 flex justify-between items-center font-semibold shrink-0">
             <span>GPC Enterprise</span>
             <span id="clock" class="text-slate-300">00:00</span>
         </div>
@@ -221,7 +221,6 @@
             navOrder.forEach((key, i) => {
                 const btnNum = i + 1;
                 const isGuest = key === 'guest';
-                // Vertical centering applied via min-h-[80px] and flex flex-col justify-center
                 nav.innerHTML += `
                     <button id="nav-btn-${key}" onclick="updateView('${key}')" class="w-full text-left px-5 py-4 rounded-lg border-l-4 border-transparent hover:bg-white/5 transition-all group relative flex flex-col justify-center min-h-[80px] ${isGuest ? 'bg-white/5 border-l-gpc-blue' : ''}">
                         <div class="flex items-center justify-between mb-1 w-full">
@@ -282,13 +281,13 @@
             let html = '';
             
             if (viewId === 'data-centers' && pageContent['data-centers']) {
-                html += '<div class="grid grid-cols-3 gap-6 w-full max-w-6xl mx-auto content-start fade-in pt-8">';
+                html += '<div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 w-full max-w-7xl mx-auto content-start fade-in">';
                 pageContent['data-centers'].forEach(dc => {
                     html += `
-                        <div class="group relative p-6 border border-slate-200 rounded-xl bg-white hover:bg-gpc-navy transition-colors duration-300 shadow-sm hover:shadow-xl overflow-hidden cursor-default">
+                        <div class="group relative p-5 border border-slate-200 rounded-xl bg-white hover:bg-gpc-navy transition-colors duration-300 shadow-sm hover:shadow-xl overflow-hidden cursor-default flex flex-col justify-center min-h-[100px]">
                             <div class="absolute inset-0 bg-gpc-blue opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-                            <span class="text-xs font-bold text-slate-400 group-hover:text-gpc-orange transition-colors uppercase tracking-widest block mb-2">${dc.city}</span>
-                            <h3 class="text-xl font-bold text-slate-800 group-hover:text-white group-hover:scale-110 transform origin-left transition-all duration-300">${dc.name}</h3>
+                            <span class="text-[10px] font-bold text-slate-400 group-hover:text-gpc-orange transition-colors uppercase tracking-widest block mb-1 z-10 relative">${dc.city}</span>
+                            <h3 class="text-base font-bold text-slate-800 group-hover:text-white group-hover:scale-105 transform origin-left transition-all duration-300 z-10 relative">${dc.name}</h3>
                         </div>
                     `;
                 });
@@ -502,7 +501,8 @@
         // --- HARDWARE BUTTONS & UTILS ---
         window.addEventListener('keydown', (e) => {
             const num = parseInt(e.key);
-            if (num > 0 && num <= navOrder.length) updateView(navOrder[num - 1]);
+            // Adjusted logic to map top 9 nav items to keys 1-9
+            if (num > 0 && num <= 9 && num <= navOrder.length) updateView(navOrder[num - 1]);
         });
 
         function startClock() {
