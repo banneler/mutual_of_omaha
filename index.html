@@ -66,7 +66,7 @@
         
         <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center z-10 animate-pulse w-full text-center pointer-events-none">
             <svg class="w-8 h-8 text-gpc-orange mb-3 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path></svg>
-            <p class="text-slate-300 font-bold tracking-[0.3em] text-lg drop-shadow-lg">TOUCH SCREEN TO EXPLORE</p>
+            <p class="text-slate-300 font-bold tracking-[0.3em] text-lg drop-shadow-lg">Click Screen to Explore</p>
         </div>
     </div>
 
@@ -401,9 +401,7 @@
                 }
             };
             
-            // Listen for any interaction to wake up the system
-            window.addEventListener('mousemove', resetTimer); 
-            window.addEventListener('keypress', resetTimer);
+            // Require click (or touch) to dismiss screensaver
             window.addEventListener('touchstart', resetTimer, {passive: true}); 
             window.addEventListener('click', resetTimer);
         }
