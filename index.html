@@ -382,7 +382,7 @@
             const ss = document.getElementById('screensaver');
             setInterval(() => {
                 idleTime++;
-                if (idleTime > 60) {
+                if (idleTime > 300) {
                     ss.classList.remove('hidden');
                     setTimeout(() => ss.classList.add('opacity-100'), 50);
                 }
