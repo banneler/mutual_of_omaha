@@ -95,7 +95,7 @@
             <img src="GPC-White-1-1.webp" alt="GPC Logo" class="h-24 w-auto object-contain mb-6 drop-shadow-lg transition-transform hover:scale-105">
             <div class="w-16 h-1.5 bg-gpc-blue rounded-full"></div>
         </div>
-        <nav class="flex-1 px-4 py-2 flex flex-col gap-2 overflow-y-auto" id="nav-menu"></nav>
+        <nav class="flex-1 px-4 py-2 flex flex-col gap-1 overflow-y-auto" id="nav-menu"></nav>
         <div class="p-6 text-sm text-slate-400 border-t border-slate-700/50 flex justify-between items-center font-semibold shrink-0">
             <span>GPC Strategic Accounts</span>
             <span id="clock" class="text-slate-300">00:00</span>
@@ -208,7 +208,7 @@
                 const isGuest = key === 'guest';
                 
                 nav.innerHTML += `
-                    <button id="nav-btn-${key}" onclick="updateView('${key}')" class="w-full text-left px-5 py-4 rounded-lg border-l-4 border-transparent hover:bg-white/5 transition-all group flex items-center justify-between min-h-[64px] ${isGuest ? 'bg-white/5 border-l-gpc-blue' : ''}">
+                    <button id="nav-btn-${key}" onclick="updateView('${key}')" class="w-full text-left px-5 py-3 rounded-lg border-l-4 border-transparent hover:bg-white/5 transition-all group flex items-center justify-between min-h-[56px] ${isGuest ? 'bg-white/5 border-l-gpc-blue' : ''}">
                         <div class="flex flex-col pr-3 overflow-hidden">
                             ${isGuest ? '<span class="text-[10px] font-bold tracking-widest uppercase text-gpc-orange mb-1">Custom Briefing</span>' : ''}
                             <h3 class="text-base font-semibold text-slate-200 group-hover:text-white truncate ${isGuest ? 'text-white' : ''}">${mapData[key].title}</h3>
