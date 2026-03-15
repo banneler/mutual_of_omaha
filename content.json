@@ -178,6 +178,11 @@
         "icon": "M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
       },
       {
+        "title": "Wavelength Services",
+        "desc": "Highly reliable, low-jitter Layer 1 optical transport delivering secure, dedicated bandwidth from 10G to 400G.",
+        "icon": "M2 12h4l3-9 5 18 3-9h5"
+      },
+      {
         "title": "DDoS Protection",
         "desc": "Avoid network disruptions and block high-volume attacks before they impact your customers.",
         "icon": "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
@@ -201,11 +206,6 @@
         "title": "Managed Firewall",
         "desc": "Safeguard sensitive data and secure your connection with round-the-clock network protection.",
         "icon": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-      },
-      {
-        "title": "5G Wireless Internet",
-        "desc": "Keep your business running during outages with automatic failover, professional setup and 24/7 support.",
-        "icon": "M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
       },
       {
         "title": "Managed Wi-Fi",
