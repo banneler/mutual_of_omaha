@@ -42,9 +42,10 @@
         }
     </style>
 </head>
-<body class="bg-slate-100 text-slate-800 h-screen w-screen overflow-hidden flex select-none font-sans antialiased" oncontextmenu="return false;">
-
-    <div id="screensaver" class="fixed inset-0 z-50 bg-gpc-navy hidden flex-col items-center justify-center transition-opacity duration-1000 opacity-0 cursor-pointer overflow-hidden">
+<body class="bg-black text-slate-800 h-screen w-screen overflow-hidden relative select-none font-sans antialiased" oncontextmenu="return false;">
+    <div id="scale-container" class="fixed inset-0 flex items-center justify-center">
+    <div id="app-wrapper" class="w-[1920px] h-[1080px] bg-slate-100 flex relative overflow-hidden shrink-0 origin-center">
+    <div id="screensaver" class="absolute inset-0 z-50 bg-gpc-navy hidden flex-col items-center justify-center transition-opacity duration-1000 opacity-0 cursor-pointer overflow-hidden">
         <div class="absolute inset-0 opacity-20 ken-burns" style="background-image: radial-gradient(circle at center, #1E40AF 0%, transparent 70%);"></div>
         <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px); background-size: 50px 50px; animation: gridMove 20s linear infinite;"></div>
 
@@ -134,6 +135,8 @@
 
         </section>
     </main>
+    </div>
+    </div>
 
     <script>
         // Image paths: '' = same folder as index.html (mutual_of_omaha)
@@ -143,6 +146,15 @@
         let mapData = {};
         let navOrder = [];
         let pageContent = {};
+
+        // --- SCALE TO FIT LOGIC ---
+        function scaleApp() {
+            const wrapper = document.getElementById('app-wrapper');
+            const scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+            wrapper.style.transform = `scale(${scale})`;
+        }
+        window.addEventListener('resize', scaleApp);
+        scaleApp(); // Initial scale
 
         // --- INITIALIZATION ---
         async function init() {
