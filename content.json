@@ -15,7 +15,7 @@
     "mutual-of-omaha": {
       "id": "mutual-of-omaha",
       "title": "Mutual of Omaha",
-      "subtitle": "Strategic Partnership Architecture",
+      "subtitle": "Strategic Partnership",
       "placeholder": "Load IP_Network_Map.svg",
       "file": "mutual.png",
       "type": "map",
