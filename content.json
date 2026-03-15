@@ -15,16 +15,16 @@
     "mutual-of-omaha": {
       "id": "mutual-of-omaha",
       "title": "Mutual of Omaha",
-      "subtitle": "Strategic Partnership",
+      "subtitle": "Enterprise Network Capabilities",
       "placeholder": "Load IP_Network_Map.svg",
       "file": "mutual.png",
       "type": "map",
       "talkingPoints": [
-        "Dense Omaha metro fiber ring provides a high-availability backbone for secure financial data routing.",
-        "Direct, redundant physical fiber paths to key local data centers like 1623 Farnam and Scott Tech.",
-        "100% fiber architecture completely bypasses the public internet for maximum security and compliance.",
-        "Rapid scalability up to 400G standard capacity to future-proof the new headquarters.",
-        "Dedicated, local support team with 24/7 proactive network monitoring."
+        "Dense Omaha metro fiber ring providing a high-availability backbone for secure financial data routing.",
+        "Proven capability to deliver direct, redundant physical fiber paths to key local data centers like 1623 Farnam and Scott Tech.",
+        "100% fiber architecture that completely bypasses the public internet for maximum security and compliance.",
+        "Rapid scalability up to 400G standard capacity to support massive enterprise data requirements.",
+        "Dedicated, local support team backed by 24/7 proactive network monitoring."
       ],
       "stats": [
         { "label": "Metro Fiber", "value": "800+ Miles", "color": "text-gpc-green" },
