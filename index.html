@@ -380,9 +380,14 @@
         let idleTime = 0;
         function setupScreensaver() {
             const ss = document.getElementById('screensaver');
+            
+            // Force the screensaver to appear on initial page load/refresh
+            ss.classList.remove('hidden');
+            setTimeout(() => ss.classList.add('opacity-100'), 50);
+
             setInterval(() => {
                 idleTime++;
-                if (idleTime > 300) {
+                if (idleTime > 300) { // 5-minute idle timeout
                     ss.classList.remove('hidden');
                     setTimeout(() => ss.classList.add('opacity-100'), 50);
                 }
@@ -395,8 +400,12 @@
                     setTimeout(() => ss.classList.add('hidden'), 1000);
                 }
             };
-            window.addEventListener('mousemove', resetTimer); window.addEventListener('keypress', resetTimer);
-            window.addEventListener('touchstart', resetTimer); window.addEventListener('click', resetTimer);
+            
+            // Listen for any interaction to wake up the system
+            window.addEventListener('mousemove', resetTimer); 
+            window.addEventListener('keypress', resetTimer);
+            window.addEventListener('touchstart', resetTimer, {passive: true}); 
+            window.addEventListener('click', resetTimer);
         }
 
         // --- HIDDEN ADMIN & OSK ---
