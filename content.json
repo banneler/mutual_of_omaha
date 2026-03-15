@@ -1,27 +1,34 @@
 {
   "navOrder": [
+    "mutual-of-omaha",
     "national",
     "layer2",
     "ip-network",
-    "towers",
     "nebraska",
     "omaha-metro",
-    "indiana",
-    "illinois",
-    "minnesota",
-    "colorado-wyoming",
     "data-centers",
     "products",
     "why-gpc",
     "case-studies"
   ],
   "mapData": {
+    "mutual-of-omaha": {
+      "id": "mutual-of-omaha",
+      "title": "Mutual of Omaha",
+      "subtitle": "Strategic Partnership Architecture",
+      "placeholder": "Load IP_Network_Map.svg",
+      "type": "map",
+      "insight": "GPC's dense Omaha metro fiber ring and statewide Nebraska infrastructure provide the perfect high-availability backbone for Mutual of Omaha's secure financial, insurance, and customer data routing.",
+      "stats": [
+        { "label": "Strategic Partner", "value": "Mutual of Omaha", "color": "text-gpc-blue" },
+        { "label": "Network Base", "value": "100% Fiber", "color": "text-gpc-green" }
+      ]
+    },
     "national": {
       "id": "national",
       "title": "The Network",
       "subtitle": "National Footprint & Coverages",
       "placeholder": "Load National_Map.svg",
-      "file": "National_Map.png",
       "type": "map",
       "stats": [
         { "label": "Fiber Miles", "value": "20,000+", "color": "text-gpc-green" },
@@ -34,7 +41,6 @@
       "title": "Layer 2 Core",
       "subtitle": "High-Availability Redundant Architecture",
       "placeholder": "Load Layer_2_Rings.svg",
-      "file": "Layer_2_Rings.png",
       "type": "map",
       "insight": "Our high-availability network is engineered to meet the mission-critical demands of enterprises, wholesale clients, and FTTT customers, offering 200G and 400G city-to-city routes, a redundant ring architecture and seamless scalability across 1G, 10G, and 100G services.",
       "stats": [
@@ -51,17 +57,6 @@
       "stats": [
         { "label": "Connections", "value": "Tier-1 Providers", "color": "text-gpc-blue" },
         { "label": "Exchanges", "value": "Major IXs", "color": "text-gpc-orange" }
-      ]
-    },
-    "towers": {
-      "id": "towers",
-      "title": "Fiber to the Tower",
-      "subtitle": "Fast & Reliable Wireless Backhaul",
-      "placeholder": "Load Towers_Map.svg",
-      "type": "map",
-      "stats": [
-        { "label": "Total Towers", "value": "650+", "color": "text-gpc-orange" },
-        { "label": "States Served", "value": "13", "color": "text-slate-900" }
       ]
     },
     "nebraska": {
@@ -84,51 +79,6 @@
       "stats": [
         { "label": "Advantage", "value": "Unique Bypass", "color": "text-gpc-green" },
         { "label": "Metro Miles", "value": "500+", "color": "text-gpc-blue" }
-      ]
-    },
-    "indiana": {
-      "id": "indiana",
-      "title": "Indiana Market",
-      "subtitle": "Southeastern Indiana Detail",
-      "placeholder": "Load Indiana_Map.svg",
-      "type": "map",
-      "stats": [
-        { "label": "State Fiber Miles", "value": "3,000", "color": "text-gpc-green" },
-        { "label": "Communities", "value": "32", "color": "text-slate-900" },
-        { "label": "Data Centers", "value": "3", "color": "text-gpc-blue" }
-      ]
-    },
-    "illinois": {
-      "id": "illinois",
-      "title": "Illinois Market",
-      "subtitle": "Chicago Metro & State Infrastructure",
-      "placeholder": "Load Illinois_Map.svg",
-      "type": "map",
-      "stats": [
-        { "label": "State Fiber Miles", "value": "1,800+", "color": "text-gpc-green" },
-        { "label": "Chicago DCs", "value": "4", "color": "text-gpc-blue" }
-      ]
-    },
-    "minnesota": {
-      "id": "minnesota",
-      "title": "Minnesota Market",
-      "subtitle": "State Infrastructure Detail",
-      "placeholder": "Load Minnesota_Map.svg",
-      "type": "map",
-      "stats": [
-        { "label": "State Fiber Miles", "value": "900+", "color": "text-gpc-green" },
-        { "label": "Key Hub", "value": "Minneapolis", "color": "text-slate-900" }
-      ]
-    },
-    "colorado-wyoming": {
-      "id": "colorado-wyoming",
-      "title": "Colorado & Wyoming",
-      "subtitle": "Western Expansion Routing",
-      "placeholder": "Load CO_WY_Map.svg",
-      "type": "map",
-      "stats": [
-        { "label": "Regional Miles", "value": "1,000+", "color": "text-gpc-green" },
-        { "label": "Key Hubs", "value": "Denver/Cheyenne", "color": "text-slate-900" }
       ]
     },
     "data-centers": {

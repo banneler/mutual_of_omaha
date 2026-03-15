@@ -185,7 +185,7 @@
             
             await loadJSONData();
             
-            checkClientGreeting();
+            // checkClientGreeting(); // Disabled: hardcoded Mutual of Omaha client experience
             buildNavigation();
             if(navOrder.length > 0) {
                 updateView(navOrder[0]);
@@ -340,10 +340,10 @@
                 html += '</div>';
             }
             else if (viewId === 'products' && pageContent.products) {
-                html += '<div class="grid grid-cols-3 gap-8 w-full h-full content-center fade-in max-w-6xl mx-auto">';
+                html += '<div class="grid grid-cols-3 gap-8 w-full h-full content-center items-start fade-in max-w-6xl mx-auto py-8">';
                 pageContent.products.forEach(p => {
                     html += `
-                        <div class="group relative p-6 border border-slate-200 rounded-xl bg-white hover:bg-gpc-navy transition-colors duration-300 shadow-sm hover:shadow-xl overflow-hidden cursor-default flex flex-col">
+                        <div class="group relative p-6 border border-slate-200 rounded-xl bg-white hover:bg-gpc-navy transition-colors duration-300 shadow-sm hover:shadow-xl overflow-hidden cursor-default flex flex-col min-h-[220px]">
                             <div class="absolute inset-0 bg-gpc-blue opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
                             
                             <svg class="w-8 h-8 text-gpc-blue group-hover:text-gpc-orange transition-colors duration-300 mb-4 z-10 relative" fill="none" stroke="currentColor" viewBox="0 0 24 24">
