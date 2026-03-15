@@ -125,51 +125,20 @@
                 <div id="html-layer" class="absolute inset-0 hidden overflow-y-auto p-12 bg-slate-50 z-0">
                     </div>
 
-                <canvas id="whiteboard" class="absolute inset-0 w-full h-full z-10 cursor-crosshair hidden"></canvas>
             </div>
 
-            <div id="draw-controls" class="absolute right-12 top-12 flex gap-3 z-20 transition-opacity duration-300">
-                <button id="btn-clear-draw" onclick="clearCanvas()" class="hidden px-4 py-2 bg-white text-slate-600 font-bold rounded-lg shadow-floating border border-slate-200 hover:text-red-500 text-sm transition-colors">Clear Ink</button>
-                <button id="btn-toggle-draw" onclick="toggleDrawing()" class="px-4 py-2 bg-white text-gpc-blue font-bold rounded-lg shadow-floating border border-slate-200 flex items-center gap-2 text-sm transition-colors">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg> Enable Draw
-                </button>
+            <div id="talking-points-panel" class="absolute left-12 bottom-12 z-20 hidden w-96 rounded-2xl p-6 shadow-2xl border border-white/20 bg-white/15 backdrop-blur-xl transition-opacity duration-300">
+                <h4 class="text-gpc-orange font-bold text-sm uppercase tracking-widest mb-4">Strategic Alignment</h4>
+                <ul id="talking-points-list" class="list-disc list-inside space-y-3 text-slate-800 text-sm leading-relaxed"></ul>
             </div>
 
-            <div id="insight-container" class="absolute left-12 bottom-12 z-20 hidden flex-col items-start gap-4 transition-opacity duration-300">
-                <div id="insight-modal" class="bg-gpc-navy/95 backdrop-blur-md border border-slate-700/50 rounded-2xl p-6 shadow-2xl w-80 hidden opacity-0 transition-all duration-300 translate-y-4 origin-bottom-left">
-                    <h4 class="text-gpc-orange font-bold text-sm uppercase tracking-widest mb-3">Key Insight</h4>
-                    <p id="insight-text" class="text-slate-300 text-sm leading-relaxed"></p>
-                    <button onclick="toggleInsight()" class="absolute top-4 right-4 text-slate-400 hover:text-white">✕</button>
-                </div>
-                <button onclick="toggleInsight()" class="w-14 h-14 bg-white rounded-full shadow-floating flex items-center justify-center text-gpc-orange hover:bg-gpc-orange hover:text-white transition-colors border border-slate-200">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
-                </button>
-            </div>
-
-           <div id="map-controls" class="absolute bottom-8 left-1/2 -translate-x-1/2 flex z-20 transition-opacity duration-300 w-max">
-                <div class="bg-white/90 backdrop-blur-md border border-slate-200 rounded-full px-6 py-3 shadow-floating flex items-center gap-6">
-                    <span class="text-xs font-bold text-slate-400 uppercase tracking-widest shrink-0">View Layers</span>
-                    
-                    <div class="h-5 w-px bg-slate-300"></div> <label class="flex items-center gap-3 cursor-pointer group">
-                        <span class="text-xs font-semibold text-slate-700 whitespace-nowrap">Lit Fiber Networks</span>
-                        <div class="relative scale-90 origin-left"><input type="checkbox" checked class="sr-only peer"><div class="w-11 h-6 bg-slate-200 rounded-full peer peer-checked:after:translate-x-full after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gpc-green"></div></div>
-                    </label>
-                    
-                    <label class="flex items-center gap-3 cursor-pointer group">
-                        <span class="text-xs font-semibold text-slate-700 whitespace-nowrap">400G Standard Routes</span>
-                        <div class="relative scale-90 origin-left"><input type="checkbox" checked class="sr-only peer"><div class="w-11 h-6 bg-slate-200 rounded-full peer peer-checked:after:translate-x-full after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gpc-orange"></div></div>
-                    </label>
-                    
-                    <label class="flex items-center gap-3 cursor-pointer group pr-2">
-                        <span class="text-xs font-semibold text-slate-700 whitespace-nowrap">Data Centers & 5G Towers</span>
-                        <div class="relative scale-90 origin-left"><input type="checkbox" checked class="sr-only peer"><div class="w-11 h-6 bg-slate-200 rounded-full peer peer-checked:after:translate-x-full after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gpc-blue"></div></div>
-                    </label>
-                </div>
-            </div>
         </section>
     </main>
 
     <script>
+        // Image paths: '' = same folder as index.html (mutual_of_omaha)
+        const ASSET_BASE = '';
+
         // --- GLOBAL STATE ---
         let mapData = {};
         let navOrder = [];
@@ -179,7 +148,6 @@
         async function init() {
             startClock();
             setupScreensaver();
-            setupCanvas();
             buildKeyboard();
             setupAdminTrigger();
             
@@ -273,26 +241,19 @@
 
             const mapLayer = document.getElementById('map-layer');
             const htmlLayer = document.getElementById('html-layer');
-            const mapControls = document.getElementById('map-controls');
-            const drawControls = document.getElementById('draw-controls');
-            const insightContainer = document.getElementById('insight-container');
-            const insightModal = document.getElementById('insight-modal');
-
-            // Force hide the modal popup if it was open from a previous view
-            insightModal.classList.add('hidden', 'opacity-0', 'translate-y-4');
+            const talkingPointsPanel = document.getElementById('talking-points-panel');
+            const talkingPointsList = document.getElementById('talking-points-list');
 
             if (data.type === 'map') {
                 htmlLayer.classList.add('hidden');
                 mapLayer.classList.remove('hidden');
-                mapControls.classList.remove('opacity-0', 'pointer-events-none');
-                drawControls.classList.remove('hidden'); 
                 
                 // Inject the actual image
                 const mapImg = document.getElementById('map-image');
                 const fallback = document.getElementById('map-fallback');
                 
                 if (data.file) {
-                    mapImg.src = data.file;
+                    mapImg.src = ASSET_BASE + data.file;
                     mapImg.classList.remove('hidden');
                     fallback.classList.add('hidden');
                 } else {
@@ -301,21 +262,17 @@
                     document.getElementById('placeholder-text').innerText = `Missing: ${data.id} asset`;
                 }
 
-                // Show lightbulb if insight data exists
-                if (data.insight) {
-                    insightContainer.classList.remove('hidden');
-                    document.getElementById('insight-text').innerText = data.insight;
+                // Show persistent Talking Points panel when data has talkingPoints
+                if (data.talkingPoints && Array.isArray(data.talkingPoints) && data.talkingPoints.length > 0) {
+                    talkingPointsPanel.classList.remove('hidden');
+                    talkingPointsList.innerHTML = data.talkingPoints.map(pt => `<li>${pt}</li>`).join('');
                 } else {
-                    insightContainer.classList.add('hidden');
+                    talkingPointsPanel.classList.add('hidden');
                 }
 
             } else {
                 mapLayer.classList.add('hidden');
-                mapControls.classList.add('opacity-0', 'pointer-events-none');
-                drawControls.classList.add('hidden'); 
-                insightContainer.classList.add('hidden'); // Hide lightbulb on HTML pages
-                
-                if (drawMode) toggleDrawing();
+                talkingPointsPanel.classList.add('hidden');
 
                 htmlLayer.classList.remove('hidden');
                 renderHTMLContent(viewId, htmlLayer);
@@ -329,11 +286,12 @@
             if (viewId === 'data-centers' && pageContent['data-centers']) {
                 html += '<div class="grid grid-cols-5 gap-4 w-full max-w-7xl mx-auto content-start fade-in pt-4 pb-8">';
                 pageContent['data-centers'].forEach(dc => {
+                    const hi = dc.highlight === true;
                     html += `
-                        <div class="group relative p-4 border border-slate-200 rounded-xl bg-white hover:bg-gpc-navy transition-colors duration-300 shadow-sm hover:shadow-xl overflow-hidden cursor-default flex flex-col justify-center min-h-[90px]">
-                            <div class="absolute inset-0 bg-gpc-blue opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-                            <span class="text-[9px] font-bold text-slate-400 group-hover:text-gpc-orange transition-colors uppercase tracking-widest block mb-1 z-10 relative">${dc.city}</span>
-                            <h3 class="text-sm font-bold text-slate-800 group-hover:text-white group-hover:scale-105 transform origin-left transition-all duration-300 z-10 relative leading-tight">${dc.name}</h3>
+                        <div class="group relative p-4 border border-slate-200 rounded-xl transition-colors duration-300 overflow-hidden cursor-default flex flex-col justify-center min-h-[90px] ${hi ? 'bg-gpc-navy shadow-xl' : 'bg-white hover:bg-gpc-navy shadow-sm hover:shadow-xl'}">
+                            <div class="absolute inset-0 bg-gpc-blue transition-opacity duration-300 ${hi ? 'opacity-10' : 'opacity-0 group-hover:opacity-10'}"></div>
+                            <span class="text-[9px] font-bold uppercase tracking-widest block mb-1 z-10 relative ${hi ? 'text-gpc-orange' : 'text-slate-400 group-hover:text-gpc-orange'} transition-colors">${dc.city}</span>
+                            <h3 class="text-sm font-bold transform origin-left transition-all duration-300 z-10 relative leading-tight ${hi ? 'text-white scale-105' : 'text-slate-800 group-hover:text-white group-hover:scale-105'} min-h-0 flex flex-col justify-center"><span class="block truncate" title="${dc.name}">${dc.name}</span>${dc.nameNormal ? `<span class="block font-normal truncate text-[10px] leading-tight mt-0.5" title="${dc.nameNormal}">${dc.nameNormal}</span>` : ''}</h3>
                         </div>
                     `;
                 });
@@ -417,76 +375,6 @@
             
             container.innerHTML = html;
         }
-
-        // --- TOGGLE INSIGHT POPUP ---
-        function toggleInsight() {
-            const modal = document.getElementById('insight-modal');
-            if (modal.classList.contains('hidden')) {
-                modal.classList.remove('hidden');
-                setTimeout(() => {
-                    modal.classList.remove('opacity-0', 'translate-y-4');
-                }, 10);
-            } else {
-                modal.classList.add('opacity-0', 'translate-y-4');
-                setTimeout(() => {
-                    modal.classList.add('hidden');
-                }, 300);
-            }
-        }
-
-        // --- WHITEBOARD CANVAS (HTML5 API) ---
-        const canvas = document.getElementById('whiteboard');
-        const ctx = canvas.getContext('2d');
-        let isDrawing = false, drawMode = false;
-
-        function setupCanvas() {
-            const resize = () => {
-                canvas.width = canvas.parentElement.clientWidth;
-                canvas.height = canvas.parentElement.clientHeight;
-                ctx.lineWidth = 6;
-                ctx.lineCap = 'round';
-                ctx.strokeStyle = '#EA580C';
-            };
-            window.addEventListener('resize', resize);
-            resize();
-
-            const startPos = (e) => {
-                isDrawing = true;
-                ctx.beginPath();
-                const rect = canvas.getBoundingClientRect();
-                const x = e.touches ? e.touches[0].clientX - rect.left : e.clientX - rect.left;
-                const y = e.touches ? e.touches[0].clientY - rect.top : e.clientY - rect.top;
-                ctx.moveTo(x, y);
-            };
-            const draw = (e) => {
-                if (!isDrawing) return;
-                e.preventDefault();
-                const rect = canvas.getBoundingClientRect();
-                const x = e.touches ? e.touches[0].clientX - rect.left : e.clientX - rect.left;
-                const y = e.touches ? e.touches[0].clientY - rect.top : e.clientY - rect.top;
-                ctx.lineTo(x, y);
-                ctx.stroke();
-            };
-            const stopPos = () => { isDrawing = false; ctx.closePath(); };
-
-            canvas.addEventListener('mousedown', startPos); canvas.addEventListener('mousemove', draw); canvas.addEventListener('mouseup', stopPos); canvas.addEventListener('mouseout', stopPos);
-            canvas.addEventListener('touchstart', startPos); canvas.addEventListener('touchmove', draw); canvas.addEventListener('touchend', stopPos);
-        }
-
-        function toggleDrawing() {
-            drawMode = !drawMode;
-            canvas.classList.toggle('hidden');
-            document.getElementById('btn-clear-draw').classList.toggle('hidden');
-            const btn = document.getElementById('btn-toggle-draw');
-            if (drawMode) {
-                btn.innerHTML = 'Disable Draw';
-                btn.classList.replace('text-gpc-blue', 'text-slate-400');
-            } else {
-                btn.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg> Enable Draw';
-                btn.classList.replace('text-slate-400', 'text-gpc-blue');
-            }
-        }
-        function clearCanvas() { ctx.clearRect(0, 0, canvas.width, canvas.height); }
 
         // --- SCREENSAVER (ATTRACT MODE) ---
         let idleTime = 0;
