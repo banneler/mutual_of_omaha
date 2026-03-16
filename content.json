@@ -90,8 +90,7 @@
       "file": "omaha.png",
       "type": "map",
       "stats": [
-        { "label": "Metro Fiber Miles", "value": "800+", "color": "text-gpc-green" },
-        { "label": "Advantage", "value": "Unique Bypass", "color": "text-gpc-blue" }
+        { "label": "Metro Fiber Miles", "value": "800+", "color": "text-gpc-green" }
       ]
     },
     "key-routes": {
