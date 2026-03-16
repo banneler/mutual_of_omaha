@@ -99,7 +99,13 @@
         <nav class="flex-1 px-4 py-2 flex flex-col gap-1 overflow-y-auto" id="nav-menu"></nav>
         <div class="p-6 text-sm text-slate-400 border-t border-slate-700/50 flex justify-between items-center font-semibold shrink-0">
             <span>GPC Strategic Accounts</span>
-            <span id="clock" class="text-slate-300">00:00</span>
+            <div class="flex items-center gap-3">
+                <button id="btn-fullscreen" type="button" class="p-1.5 rounded text-slate-400 hover:text-white hover:bg-white/10 transition-colors" title="Toggle full screen">
+                    <svg id="icon-fullscreen" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1v4m0 0h-4m4 0l-5-5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+                    <svg id="icon-exit-fullscreen" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 9V4.5M9 9H4.5M9 9L3.75 3.75M9 15v4.5M9 15H4.5M9 15l-5.25 5.25M15 9h4.5M15 9V4.5M15 9l5.25-5.25M15 15h4.5M15 15v4.5m0-4.5l5.25 5.25"></path></svg>
+                </button>
+                <span id="clock" class="text-slate-300">00:00</span>
+            </div>
         </div>
     </aside>
 
@@ -160,6 +166,7 @@
         async function init() {
             startClock();
             setupScreensaver();
+            setupFullscreen();
             buildKeyboard();
             setupAdminTrigger();
             
@@ -490,6 +497,28 @@
             setInterval(() => {
                 document.getElementById('clock').innerText = new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
             }, 1000);
+        }
+
+        // --- FULLSCREEN TOGGLE ---
+        function setupFullscreen() {
+            const btn = document.getElementById('btn-fullscreen');
+            const iconEnter = document.getElementById('icon-fullscreen');
+            const iconExit = document.getElementById('icon-exit-fullscreen');
+            function updateIcon() {
+                const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+                iconEnter.classList.toggle('hidden', isFs);
+                iconExit.classList.toggle('hidden', !isFs);
+            }
+            document.addEventListener('fullscreenchange', updateIcon);
+            document.addEventListener('webkitfullscreenchange', updateIcon);
+            btn.addEventListener('click', () => {
+                if (document.fullscreenElement || document.webkitFullscreenElement) {
+                    (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+                } else {
+                    (document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen).call(document.documentElement);
+                }
+            });
+            updateIcon();
         }
 
         window.onload = init;
